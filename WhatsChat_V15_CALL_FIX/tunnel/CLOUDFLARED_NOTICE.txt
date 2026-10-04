@@ -1,0 +1,13 @@
+WhatsChat includes the official cloudflared Windows executable to create an optional public HTTPS/WSS Quick Tunnel.
+
+Publisher: Cloudflare, Inc.
+Included version: 2026.7.2
+Official project: https://github.com/cloudflare/cloudflared
+Official documentation: https://developers.cloudflare.com/tunnel/
+
+The included executable has a valid Windows digital signature from Cloudflare, Inc.
+See LICENSE-cloudflared.txt in this folder for its license.
+
+Using the tunnel is optional. START_WHATSCHAT_LIVE.cmd remains local-only.
+START_PUBLIC_WHATSCHAT.cmd creates a temporary trycloudflare.com address while this computer is running.
+

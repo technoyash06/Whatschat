@@ -1,0 +1,217 @@
+{
+  "version": 4,
+  "users": {
+    "yash": {
+      "display": "Yash",
+      "salt": "08ff86904845554ccd01019e75bfd5bb",
+      "hash": "3270591b5d2abd77658ebb62422103d5b9dda35f2c5d9186e9d996e36e89f47f",
+      "contacts": [
+        "samar"
+      ],
+      "createdAt": "2026-10-03T10:34:07.773Z"
+    },
+    "samar": {
+      "display": "Samar",
+      "salt": "204315a3c39394473e3e49a7e3c5e27e",
+      "hash": "9dc0c02ff5a5a24bb48b7ddd295d440b9fb554572462037d6ce6eaaacef56ece",
+      "contacts": [
+        "yash"
+      ],
+      "createdAt": "2026-10-03T10:34:42.750Z"
+    }
+  },
+  "messages": [
+    {
+      "id": "a0c4bd86-7423-42af-a459-e962461d44b1",
+      "from": "samar",
+      "to": "yash",
+      "text": "Samar Singh mathur",
+      "sentAt": "2026-10-03T10:35:43.855Z",
+      "deliveredAt": "2026-10-03T10:35:43.855Z",
+      "readAt": "2026-10-03T10:36:00.322Z"
+    },
+    {
+      "id": "47d27154-4e61-4f15-b03a-a0c70e4efe05",
+      "from": "yash",
+      "to": "samar",
+      "text": "hi",
+      "sentAt": "2026-10-03T10:36:04.802Z",
+      "deliveredAt": "2026-10-03T10:36:04.802Z"
+    },
+    {
+      "id": "cc36c007-7187-4cb8-8e8c-65e1627a9e80",
+      "from": "samar",
+      "to": "yash",
+      "text": "1qwqwq",
+      "sentAt": "2026-10-03T10:36:07.092Z",
+      "deliveredAt": "2026-10-03T10:36:07.092Z",
+      "readAt": "2026-10-03T10:37:21.777Z"
+    },
+    {
+      "id": "65af5678-d038-4856-8e3e-900fed587d8a",
+      "from": "samar",
+      "to": "yash",
+      "text": "😂😂😂😂😂😂😂🦶🏻❤️👏🏻📱😎",
+      "sentAt": "2026-10-03T10:36:46.917Z",
+      "deliveredAt": "2026-10-03T10:36:46.917Z",
+      "readAt": "2026-10-03T10:37:21.777Z"
+    },
+    {
+      "id": "c2c02731-1ff9-4dec-86b8-beaac65dece3",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:37:02.526Z",
+      "deliveredAt": "2026-10-03T10:37:02.526Z"
+    },
+    {
+      "id": "c69175d8-d25f-42eb-9d2b-fd73b9410c35",
+      "from": "yash",
+      "to": "samar",
+      "text": "[VOICE] voice-message-1791023849324.webm — https://seeing-undefined-cases-supposed.trycloudflare.com/media/3cf8e0e36f104c38766d8455bb90a734af9c",
+      "sentAt": "2026-10-03T10:37:29.408Z",
+      "deliveredAt": "2026-10-03T10:37:29.408Z",
+      "attachment": {
+        "id": "3cf8e0e36f104c38766d8455bb90a734af9c",
+        "name": "voice-message-1791023849324.webm",
+        "mime": "audio/webm",
+        "size": 33753,
+        "kind": "VOICE",
+        "extension": ".webm"
+      }
+    },
+    {
+      "id": "4040405d-1017-492f-8545-5fba929e158a",
+      "from": "samar",
+      "to": "yash",
+      "text": "[GIF LINK] https://geniuslabs.live/",
+      "sentAt": "2026-10-03T10:37:42.119Z",
+      "deliveredAt": "2026-10-03T10:37:42.119Z",
+      "readAt": "2026-10-03T10:39:34.718Z"
+    },
+    {
+      "id": "8223e206-35b5-4c05-bd69-e75b0a0fa5a1",
+      "from": "yash",
+      "to": "samar",
+      "text": "[VIDEO] download.mp4 — https://seeing-undefined-cases-supposed.trycloudflare.com/media/745f02fd376868c82ffd911220fd8c35ab64",
+      "sentAt": "2026-10-03T10:39:34.679Z",
+      "deliveredAt": "2026-10-03T10:39:34.679Z",
+      "attachment": {
+        "id": "745f02fd376868c82ffd911220fd8c35ab64",
+        "name": "download.mp4",
+        "mime": "video/mp4",
+        "size": 8101438,
+        "kind": "VIDEO",
+        "extension": ".mp4"
+      }
+    },
+    {
+      "id": "3acbc20d-d79f-4405-901b-ef9a8c0893be",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:41:21.080Z",
+      "deliveredAt": "2026-10-03T10:41:21.080Z"
+    },
+    {
+      "id": "c3ebbd91-432f-4d6e-bdb3-04c4303cf5e0",
+      "from": "samar",
+      "to": "yash",
+      "text": "👎🏻🎉👍🏻📱👍🏻",
+      "sentAt": "2026-10-03T10:41:24.780Z",
+      "deliveredAt": "2026-10-03T10:41:24.780Z"
+    },
+    {
+      "id": "5f68d750-6230-46ff-8032-f9dd5cc60e4d",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:41:24.836Z",
+      "deliveredAt": "2026-10-03T10:41:24.836Z"
+    },
+    {
+      "id": "72603af0-c1ff-4e2c-a636-1726e8f1a974",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:41:28.928Z",
+      "deliveredAt": "2026-10-03T10:41:28.928Z"
+    },
+    {
+      "id": "ecdcfad7-b7e1-4d33-8e48-859c005725e2",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:41:31.371Z",
+      "deliveredAt": "2026-10-03T10:41:31.371Z"
+    },
+    {
+      "id": "81cc6bc5-3511-4325-a7ad-e893e8c2b38d",
+      "from": "yash",
+      "to": "samar",
+      "text": "▄︻デ══━一💥",
+      "sentAt": "2026-10-03T10:41:33.282Z",
+      "deliveredAt": "2026-10-03T10:41:33.282Z"
+    }
+  ],
+  "groups": {
+    "fa20e32b": {
+      "id": "fa20e32b",
+      "name": "MEME 6767",
+      "owner": "yash",
+      "members": [
+        "yash",
+        "samar"
+      ],
+      "createdAt": "2026-10-03T10:43:29.253Z",
+      "joinedAt": {
+        "yash": "2026-10-03T10:43:29.253Z",
+        "samar": "2026-10-03T10:43:29.253Z"
+      }
+    }
+  },
+  "groupMessages": [
+    {
+      "id": "10f6ba01-343a-444b-8cd9-238e3117c5ab",
+      "groupId": "fa20e32b",
+      "from": "yash",
+      "text": "hi",
+      "sentAt": "2026-10-03T10:44:05.087Z",
+      "recipients": [
+        "samar"
+      ],
+      "deliveredTo": {
+        "samar": "2026-10-03T10:44:05.087Z"
+      },
+      "readBy": {}
+    },
+    {
+      "id": "fa0b9c1f-c035-4252-ba9d-5349fcca34fc",
+      "groupId": "fa20e32b",
+      "from": "yash",
+      "text": "676767",
+      "sentAt": "2026-10-03T10:44:08.889Z",
+      "recipients": [
+        "samar"
+      ],
+      "deliveredTo": {
+        "samar": "2026-10-03T10:44:08.889Z"
+      },
+      "readBy": {}
+    },
+    {
+      "id": "53b671f0-49a1-4cdf-b1a9-2c519248d8fb",
+      "groupId": "fa20e32b",
+      "from": "yash",
+      "text": "⁶🤷🏻‍♀️⁷",
+      "sentAt": "2026-10-03T10:44:32.546Z",
+      "recipients": [
+        "samar"
+      ],
+      "deliveredTo": {
+        "samar": "2026-10-03T10:44:32.546Z"
+      },
+      "readBy": {}
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WhatsChat Media Studio</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,Segoe UI,Arial,sans-serif;background:#031916;color:#f3fff9}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 5%,#25df8b43,transparent 32%),radial-gradient(circle at 92% 88%,#785cff3d,transparent 34%),linear-gradient(145deg,#021512,#073d35);padding:22px}.app{width:min(1120px,100%);margin:auto;border:1px solid #a3ffce30;border-radius:28px;overflow:hidden;background:#071f1cdd;box-shadow:0 28px 90px #0009}header{padding:22px 25px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#0c332daa;border-bottom:1px solid #b8ffdc1c}.brand{display:flex;align-items:center;gap:13px}.logo{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#4bed94,#16b967);font-size:25px;font-weight:1000}.brand h1{margin:0;font-size:20px}.brand p{margin:4px 0 0;color:#a9cec3;font-size:12px}.peer{padding:8px 12px;border-radius:999px;background:#153f38;color:#86f5bc;font-weight:900;font-size:12px}main{padding:20px;display:grid;gap:18px}.status{padding:12px 15px;border:1px solid #9fffd326;border-radius:14px;background:#0c2b27;color:#c9e8df;min-height:44px}.status.error{color:#ff9eb0;border-color:#ff557238}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid #a8fbd627;border-radius:20px;padding:17px;background:linear-gradient(155deg,#123b34,#0b2925);box-shadow:0 12px 26px #0004}.card h2{margin:0 0 6px;font-size:16px}.card p{margin:0 0 13px;color:#9fc5ba;font-size:12px;line-height:1.45}.actions{display:flex;gap:9px;flex-wrap:wrap}.button,label.button{border:1px solid #b8ffdd30;border-radius:13px;background:#1c554b;color:#fff;padding:11px 14px;font-weight:900;cursor:pointer;font-size:13px}.button:hover,label.button:hover{background:#267064}.button.primary{background:linear-gradient(90deg,#39df82,#16b96a);color:#043928}.button.purple{background:linear-gradient(90deg,#a66cff,#6554da)}.button.danger{background:#bd3751}.button:disabled{opacity:.42;cursor:not-allowed}.hidden-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}video{width:100%;max-height:245px;display:none;margin:12px 0;border-radius:14px;background:#02100e}video.active{display:block}.maker{display:grid;grid-template-columns:1fr 54px;gap:9px;margin-bottom:10px}.maker input[type=text]{width:100%;border:1px solid #9bfbd235;border-radius:12px;padding:11px 12px;background:#071d1a;color:#fff;font-weight:800}.maker input[type=color]{width:54px;height:43px;border:0;border-radius:12px;background:transparent}.recent{display:grid;gap:9px}.media-item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:11px 13px;border-radius:13px;background:#0b2925;border:1px solid #a9f6d021}.media-item strong{display:block;font-size:13px}.media-item span{font-size:11px;color:#91b8ad}.media-item a{color:#7affbd;font-weight:900;text-decoration:none}.fine{font-size:11px;color:#759d92;text-align:center;margin:0 0 18px}@media(max-width:760px){body{padding:8px}.app{border-radius:20px}.grid{grid-template-columns:1fr}header{align-items:flex-start}.peer{max-width:42%;overflow:hidden;text-overflow:ellipsis}.card{padding:15px}}
+    .form-stack{display:grid;gap:9px}.text-field{width:100%;border:1px solid #9bfbd235;border-radius:12px;padding:11px 12px;background:#071d1a;color:#fff;font-weight:800}.poll-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.poll-card{padding:13px;border-radius:14px;background:#092521;border:1px solid #9df8cf22}.poll-card h3{margin:0 0 4px;font-size:14px}.poll-card small{display:block;color:#8eb7ac;margin-bottom:9px}.poll-choice{width:100%;display:flex;justify-content:space-between;gap:10px;margin-top:7px;padding:9px 11px;border:1px solid #9cf7cf2c;border-radius:11px;background:#16473f;color:#fff;font-weight:800;cursor:pointer}.poll-choice.selected{background:#7159db;border-color:#b7a9ff}.contact-avatar{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#44e58d,#725bdb);display:grid;place-items:center;font-weight:1000}.contact-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:11px 13px;border-radius:13px;background:#0b2925;border:1px solid #a9f6d021}.contact-row strong,.contact-row span{display:block}.contact-row span{color:#91b8ad;font-size:11px}.section-list{display:grid;gap:9px}
+  </style>
+</head>
+<body>
+  <section class="app">
+    <header><div class="brand"><div class="logo">+</div><div><h1>WhatsChat Media Studio</h1><p>Direct and group media, contacts, polls, HTML downloads, GIFs, and files</p></div></div><div class="peer" id="peer">Opening…</div></header>
+    <main>
+      <div class="status" id="status">Checking your secure media session…</div>
+      <div class="grid">
+        <section class="card"><h2>Voice message</h2><p>Record from your microphone, then send it directly into this conversation.</p><div class="actions"><button class="button primary" id="recordVoice">Start recording</button><button class="button danger" id="stopVoice" disabled>Stop &amp; send</button></div></section>
+        <section class="card"><h2>Camera</h2><p>Take a photo or record a short video with your camera.</p><video id="cameraPreview" autoplay playsinline muted></video><div class="actions"><button class="button" id="openCamera">Open camera</button><button class="button" id="takePhoto" disabled>Take photo</button><button class="button" id="recordVideo" disabled>Record video</button><button class="button danger" id="stopVideo" disabled>Stop &amp; send</button></div></section>
+        <section class="card"><h2>Photos, videos, HTML, and files</h2><p>Choose multiple items up to 15 MB each. HTML files are delivered as safe downloads and are never run inside WhatsChat.</p><div class="actions"><label class="button primary" for="photoInput">Choose photos</label><input class="hidden-input" id="photoInput" type="file" accept="image/*" multiple><label class="button" for="videoInput">Choose videos</label><input class="hidden-input" id="videoInput" type="file" accept="video/*" multiple><label class="button purple" for="htmlInput">Choose HTML</label><input class="hidden-input" id="htmlInput" type="file" accept=".html,.htm,text/html" multiple><label class="button" for="fileInput">Choose files</label><input class="hidden-input" id="fileInput" type="file" multiple></div></section>
+        <section class="card"><h2>GIF generator</h2><p>Type a short reaction and WhatsChat will create a real looping animated GIF and send it.</p><div class="maker"><input id="gifText" type="text" maxlength="24" value="THANK YOU!" aria-label="GIF text"><input id="gifColor" type="color" value="#7c5cff" aria-label="GIF color"></div><button class="button purple" id="sendGif">Create &amp; send GIF</button><canvas id="gifCanvas" width="240" height="140" hidden></canvas></section>
+        <section class="card"><h2>Share a contact</h2><p>Share your own username or one of your saved contacts with this conversation.</p><div class="form-stack"><input class="text-field" id="contactUsername" maxlength="20" placeholder="Saved username" aria-label="Contact username"><button class="button primary" id="shareContact">Share contact</button></div></section>
+        <section class="card"><h2>Create a poll</h2><p>Ask a question with two to four choices. Either person can vote or change their vote.</p><div class="form-stack"><input class="text-field" id="pollQuestion" maxlength="120" placeholder="Poll question" aria-label="Poll question"><div class="poll-options"><input class="text-field poll-option" maxlength="60" placeholder="Choice 1" aria-label="Poll choice 1"><input class="text-field poll-option" maxlength="60" placeholder="Choice 2" aria-label="Poll choice 2"><input class="text-field poll-option" maxlength="60" placeholder="Choice 3 (optional)" aria-label="Poll choice 3"><input class="text-field poll-option" maxlength="60" placeholder="Choice 4 (optional)" aria-label="Poll choice 4"></div><button class="button purple" id="createPoll">Share poll</button></div></section>
+      </div>
+      <section class="card"><h2>Shared contacts</h2><p>Save contact cards that were shared in this conversation.</p><div class="section-list" id="sharedContacts"><span>No contacts have been shared yet.</span></div></section>
+      <section class="card"><h2>Conversation polls</h2><p>Vote once per poll; selecting another choice changes your vote.</p><div class="section-list" id="polls"><span>No polls have been shared yet.</span></div></section>
+      <section class="card"><h2>Recent shared media</h2><p>Open or download media already shared in this conversation.</p><div class="recent" id="recent"><span>No media loaded yet.</span></div></section>
+      <p class="fine">Files are stored on the gateway computer. Only send files you trust; WhatsChat does not scan them for malware.</p>
+    </main>
+  </section>
+  <script>
+    "use strict";
+    const token = new URLSearchParams(location.hash.slice(1)).get("token") || "";
+    const statusBox = document.getElementById("status");
+    const peerBox = document.getElementById("peer");
+    const recentBox = document.getElementById("recent");
+    const sharedContactsBox = document.getElementById("sharedContacts");
+    const pollsBox = document.getElementById("polls");
+    const cameraPreview = document.getElementById("cameraPreview");
+    const openCameraButton = document.getElementById("openCamera");
+    const takePhotoButton = document.getElementById("takePhoto");
+    const recordVideoButton = document.getElementById("recordVideo");
+    const stopVideoButton = document.getElementById("stopVideo");
+    const recordVoiceButton = document.getElementById("recordVoice");
+    const stopVoiceButton = document.getElementById("stopVoice");
+    const sendGifButton = document.getElementById("sendGif");
+    const shareContactButton = document.getElementById("shareContact");
+    const createPollButton = document.getElementById("createPoll");
+    let session = null;
+    let cameraStream = null;
+    let cameraRecorder = null;
+    let cameraChunks = [];
+    let voiceStream = null;
+    let voiceRecorder = null;
+    let voiceChunks = [];
+
+    function setStatus(message, error = false) {
+      statusBox.textContent = message;
+      statusBox.classList.toggle("error", error);
+    }
+
+    function safeName(value) {
+      return String(value || "file").replace(/[\\/:*?"<>|\u0000-\u001f]/g, "_").slice(0, 100) || "file";
+    }
+
+    async function postJson(pathname, payload) {
+      const response = await fetch(`${pathname}?token=${encodeURIComponent(token)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || "The request could not be completed.");
+      return result;
+    }
+
+    function renderRecent(items) {
+      recentBox.textContent = "";
+      if (!items || items.length === 0) {
+        recentBox.textContent = "No files have been shared in this conversation yet.";
+        return;
+      }
+      for (const item of items) {
+        const row = document.createElement("div");
+        row.className = "media-item";
+        const info = document.createElement("div");
+        const title = document.createElement("strong");
+        title.textContent = `${item.from}: ${item.name}`;
+        const detail = document.createElement("span");
+        detail.textContent = `${item.kind} · ${Math.max(1, Math.round(item.size / 1024))} KB · ${item.status}`;
+        info.append(title, detail);
+        const link = document.createElement("a");
+        link.href = item.url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        link.textContent = item.kind === "HTML" || item.kind === "FILE" ? "DOWNLOAD" : "OPEN";
+        row.append(info, link);
+        recentBox.append(row);
+      }
+    }
+
+    function renderSharedContacts(contacts) {
+      sharedContactsBox.textContent = "";
+      if (!contacts || contacts.length === 0) {
+        sharedContactsBox.textContent = "No contacts have been shared in this conversation yet.";
+        return;
+      }
+      for (const contact of contacts) {
+        const row = document.createElement("div");
+        row.className = "contact-row";
+        const avatar = document.createElement("div");
+        avatar.className = "contact-avatar";
+        avatar.textContent = contact.display.slice(0, 1).toUpperCase();
+        const info = document.createElement("div");
+        const title = document.createElement("strong");
+        title.textContent = contact.display;
+        const detail = document.createElement("span");
+        detail.textContent = `@${contact.username} · shared by ${contact.from} · ${contact.status}`;
+        info.append(title, detail);
+        const button = document.createElement("button");
+        button.className = "button";
+        button.textContent = contact.saved ? "SAVED" : contact.canSave ? "SAVE" : "YOUR ACCOUNT";
+        button.disabled = contact.saved || !contact.canSave;
+        button.onclick = async () => {
+          try {
+            await postJson("/api/media/contact/save", { username: contact.username });
+            setStatus(`${contact.display} was saved to your contacts.`);
+            await loadSession();
+          } catch (error) { setStatus(error.message, true); }
+        };
+        row.append(avatar, info, button);
+        sharedContactsBox.append(row);
+      }
+    }
+
+    function renderPolls(polls) {
+      pollsBox.textContent = "";
+      if (!polls || polls.length === 0) {
+        pollsBox.textContent = "No polls have been shared in this conversation yet.";
+        return;
+      }
+      for (const poll of polls) {
+        const card = document.createElement("div");
+        card.className = "poll-card";
+        const title = document.createElement("h3");
+        title.textContent = poll.question;
+        const detail = document.createElement("small");
+        detail.textContent = `Shared by ${poll.from} · ${poll.status}`;
+        card.append(title, detail);
+        for (const option of poll.options) {
+          const button = document.createElement("button");
+          button.className = `poll-choice${option.selected ? " selected" : ""}`;
+          const choiceText = document.createElement("span");
+          choiceText.textContent = option.text;
+          const votes = document.createElement("span");
+          votes.textContent = `${option.votes} vote${option.votes === 1 ? "" : "s"}`;
+          button.append(choiceText, votes);
+          button.onclick = async () => {
+            try {
+              await postJson("/api/media/poll/vote", { pollId: poll.id, optionId: option.id });
+              setStatus(`Your vote for “${option.text}” was saved.`);
+              await loadSession();
+            } catch (error) { setStatus(error.message, true); }
+          };
+          card.append(button);
+        }
+        pollsBox.append(card);
+      }
+    }
+
+    async function loadSession() {
+      if (!token) throw new Error("This media link is missing or expired.");
+      const response = await fetch(`/api/media/session?token=${encodeURIComponent(token)}`, { cache: "no-store" });
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || "The media session could not open.");
+      session = result;
+      peerBox.textContent = result.isGroup ? `Group · ${result.target} · ${result.memberCount} members` : `Chat with ${result.target}`;
+      setStatus(`Ready to send media to ${result.isGroup ? "group " : ""}${result.target}.`);
+      renderRecent(result.items);
+      renderSharedContacts(result.sharedContacts);
+      renderPolls(result.polls);
+    }
+
+    async function sendBlob(blob, name) {
+      if (!session) throw new Error("The media session is not ready.");
+      if (!blob || blob.size === 0) throw new Error("The selected file is empty.");
+      setStatus(`Sending ${name}…`);
+      const response = await fetch(`/api/media/send?token=${encodeURIComponent(token)}`, {
+        method: "POST",
+        headers: { "Content-Type": blob.type || "application/octet-stream", "X-File-Name": encodeURIComponent(safeName(name)) },
+        body: blob,
+      });
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || "The file could not be sent.");
+      setStatus(`${result.kind} sent to ${session.target} ${result.status}.`);
+      await loadSession();
+    }
+
+    async function sendFiles(files) {
+      for (const file of files) {
+        try { await sendBlob(file, file.name); }
+        catch (error) { setStatus(error.message || "A file could not be sent.", true); break; }
+      }
+    }
+
+    for (const id of ["photoInput", "videoInput", "htmlInput", "fileInput"]) {
+      document.getElementById(id).onchange = (event) => sendFiles([...event.target.files]);
+    }
+
+    shareContactButton.onclick = async () => {
+      const username = document.getElementById("contactUsername").value.trim();
+      if (!username) return setStatus("Type a saved username to share.", true);
+      try {
+        shareContactButton.disabled = true;
+        const result = await postJson("/api/media/contact", { username });
+        setStatus(`${result.contact.display} was shared with ${session.target}.`);
+        document.getElementById("contactUsername").value = "";
+        await loadSession();
+      } catch (error) { setStatus(error.message, true); }
+      finally { shareContactButton.disabled = false; }
+    };
+
+    createPollButton.onclick = async () => {
+      const question = document.getElementById("pollQuestion").value.trim();
+      const options = [...document.querySelectorAll(".poll-option")].map((input) => input.value.trim()).filter(Boolean);
+      try {
+        createPollButton.disabled = true;
+        await postJson("/api/media/poll", { question, options });
+        setStatus(`Poll shared with ${session.target}.`);
+        document.getElementById("pollQuestion").value = "";
+        document.querySelectorAll(".poll-option").forEach((input) => { input.value = ""; });
+        await loadSession();
+      } catch (error) { setStatus(error.message, true); }
+      finally { createPollButton.disabled = false; }
+    };
+
+    recordVoiceButton.onclick = async () => {
+      try {
+        voiceStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        voiceChunks = [];
+        voiceRecorder = new MediaRecorder(voiceStream);
+        voiceRecorder.ondataavailable = (event) => { if (event.data.size) voiceChunks.push(event.data); };
+        voiceRecorder.onstop = async () => {
+          const type = voiceRecorder.mimeType || "audio/webm";
+          voiceStream.getTracks().forEach((track) => track.stop());
+          recordVoiceButton.disabled = false;
+          stopVoiceButton.disabled = true;
+          try { await sendBlob(new Blob(voiceChunks, { type }), `voice-message-${Date.now()}.webm`); }
+          catch (error) { setStatus(error.message, true); }
+        };
+        voiceRecorder.start(250);
+        recordVoiceButton.disabled = true;
+        stopVoiceButton.disabled = false;
+        setStatus("Recording voice message…");
+      } catch { setStatus("Microphone permission was not allowed.", true); }
+    };
+    stopVoiceButton.onclick = () => { if (voiceRecorder && voiceRecorder.state !== "inactive") voiceRecorder.stop(); };
+
+    openCameraButton.onclick = async () => {
+      try {
+        if (cameraStream) cameraStream.getTracks().forEach((track) => track.stop());
+        cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: true });
+        cameraPreview.srcObject = cameraStream;
+        cameraPreview.classList.add("active");
+        takePhotoButton.disabled = false;
+        recordVideoButton.disabled = false;
+        setStatus("Camera is ready.");
+      } catch { setStatus("Camera permission was not allowed.", true); }
+    };
+
+    takePhotoButton.onclick = () => {
+      if (!cameraStream) return;
+      const canvas = document.createElement("canvas");
+      canvas.width = cameraPreview.videoWidth || 1280;
+      canvas.height = cameraPreview.videoHeight || 720;
+      canvas.getContext("2d").drawImage(cameraPreview, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob((blob) => blob && sendBlob(blob, `camera-photo-${Date.now()}.jpg`).catch((error) => setStatus(error.message, true)), "image/jpeg", 0.9);
+    };
+
+    recordVideoButton.onclick = () => {
+      if (!cameraStream) return;
+      cameraChunks = [];
+      cameraRecorder = new MediaRecorder(cameraStream);
+      cameraRecorder.ondataavailable = (event) => { if (event.data.size) cameraChunks.push(event.data); };
+      cameraRecorder.onstop = () => {
+        const type = cameraRecorder.mimeType || "video/webm";
+        recordVideoButton.disabled = false;
+        stopVideoButton.disabled = true;
+        sendBlob(new Blob(cameraChunks, { type }), `camera-video-${Date.now()}.webm`).catch((error) => setStatus(error.message, true));
+      };
+      cameraRecorder.start(250);
+      recordVideoButton.disabled = true;
+      stopVideoButton.disabled = false;
+      setStatus("Recording camera video…");
+    };
+    stopVideoButton.onclick = () => { if (cameraRecorder && cameraRecorder.state !== "inactive") cameraRecorder.stop(); };
+
+    function hexColor(value) {
+      const match = /^#([0-9a-f]{6})$/i.exec(value || "");
+      const hex = match ? match[1] : "7c5cff";
+      return [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)];
+    }
+
+    function lzwEncode(indices, minimumCodeSize) {
+      const clear = 1 << minimumCodeSize;
+      const end = clear + 1;
+      let codeSize = minimumCodeSize + 1;
+      let nextCode = end + 1;
+      let dictionary = new Map();
+      const bytes = [];
+      let current = 0;
+      let bitCount = 0;
+      const writeCode = (code) => {
+        current |= code << bitCount;
+        bitCount += codeSize;
+        while (bitCount >= 8) {
+          bytes.push(current & 255);
+          current >>>= 8;
+          bitCount -= 8;
+        }
+      };
+      const reset = () => { dictionary = new Map(); codeSize = minimumCodeSize + 1; nextCode = end + 1; };
+      reset();
+      writeCode(clear);
+      let prefix = indices[0];
+      for (let index = 1; index < indices.length; index += 1) {
+        const value = indices[index];
+        const key = `${prefix},${value}`;
+        if (dictionary.has(key)) {
+          prefix = dictionary.get(key);
+          continue;
+        }
+        writeCode(prefix);
+        if (nextCode < 4096) {
+          dictionary.set(key, nextCode);
+          nextCode += 1;
+          if (nextCode > (1 << codeSize) && codeSize < 12) codeSize += 1;
+        } else {
+          writeCode(clear);
+          reset();
+        }
+        prefix = value;
+      }
+      writeCode(prefix);
+      writeCode(end);
+      if (bitCount > 0) bytes.push(current & 255);
+      return bytes;
+    }
+
+    function createGif(text, baseColor) {
+      const canvas = document.getElementById("gifCanvas");
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      const [r, g, b] = hexColor(baseColor);
+      const palette = [[r,g,b],[Math.max(0,r-55),Math.max(0,g-55),Math.max(0,b-55)],[Math.min(255,r+55),Math.min(255,g+55),Math.min(255,b+55)],[255,255,255],[255,219,84],[255,91,139],[76,223,255],[12,25,30]];
+      const frames = [];
+      for (let frame = 0; frame < 6; frame += 1) {
+        context.fillStyle = `rgb(${palette[0].join(",")})`;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = `rgb(${palette[1].join(",")})`;
+        context.fillRect(0, 105, canvas.width, 35);
+        for (let dot = 0; dot < 18; dot += 1) {
+          const color = palette[4 + (dot % 3)];
+          context.fillStyle = `rgb(${color.join(",")})`;
+          context.fillRect((dot * 47 + frame * 19) % canvas.width, (dot * 23 + frame * 11) % 98, 5 + (dot % 4), 5 + (dot % 4));
+        }
+        context.save();
+        context.translate(canvas.width / 2, 62 + Math.sin(frame * Math.PI / 3) * 7);
+        context.rotate(Math.sin(frame * Math.PI / 3) * 0.05);
+        context.fillStyle = "white";
+        context.font = "900 28px Arial";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText(text.slice(0, 24) || "WOW!", 0, 0, 220);
+        context.restore();
+        context.fillStyle = "white";
+        context.font = "900 12px Arial";
+        context.textAlign = "center";
+        context.fillText("WHATSCHAT GIF", canvas.width / 2, 127);
+        const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+        const indexed = new Uint8Array(canvas.width * canvas.height);
+        for (let pixel = 0; pixel < indexed.length; pixel += 1) {
+          const pr = data[pixel * 4], pg = data[pixel * 4 + 1], pb = data[pixel * 4 + 2];
+          let best = 0, distance = Infinity;
+          for (let colorIndex = 0; colorIndex < palette.length; colorIndex += 1) {
+            const color = palette[colorIndex];
+            const candidate = (pr-color[0])**2 + (pg-color[1])**2 + (pb-color[2])**2;
+            if (candidate < distance) { distance = candidate; best = colorIndex; }
+          }
+          indexed[pixel] = best;
+        }
+        frames.push(indexed);
+      }
+      const output = [];
+      const pushText = (value) => { for (const character of value) output.push(character.charCodeAt(0)); };
+      const push16 = (value) => output.push(value & 255, (value >> 8) & 255);
+      pushText("GIF89a"); push16(canvas.width); push16(canvas.height); output.push(0xf2, 0, 0);
+      for (const color of palette) output.push(...color);
+      output.push(0x21,0xff,0x0b); pushText("NETSCAPE2.0"); output.push(3,1,0,0,0);
+      for (const indexed of frames) {
+        output.push(0x21,0xf9,4,4,10,0,0,0,0x2c); push16(0); push16(0); push16(canvas.width); push16(canvas.height); output.push(0,3);
+        const compressed = lzwEncode(indexed, 3);
+        for (let offset = 0; offset < compressed.length; offset += 255) {
+          const block = compressed.slice(offset, offset + 255);
+          output.push(block.length, ...block);
+        }
+        output.push(0);
+      }
+      output.push(0x3b);
+      return new Blob([new Uint8Array(output)], { type: "image/gif" });
+    }
+
+    sendGifButton.onclick = async () => {
+      try {
+        sendGifButton.disabled = true;
+        setStatus("Generating your animated GIF…");
+        const text = document.getElementById("gifText").value.trim() || "WOW!";
+        const blob = createGif(text, document.getElementById("gifColor").value);
+        await sendBlob(blob, `whatschat-${safeName(text).replace(/\s+/g,"-").toLowerCase()}.gif`);
+      } catch (error) { setStatus(error.message || "The GIF could not be created.", true); }
+      finally { sendGifButton.disabled = false; }
+    };
+
+    addEventListener("beforeunload", () => {
+      if (cameraStream) cameraStream.getTracks().forEach((track) => track.stop());
+      if (voiceStream) voiceStream.getTracks().forEach((track) => track.stop());
+    });
+
+    if (!navigator.mediaDevices || !window.MediaRecorder) {
+      recordVoiceButton.disabled = true;
+      openCameraButton.disabled = true;
+      setStatus("Uploads and GIFs work, but this browser cannot record camera or microphone media.", true);
+    }
+    loadSession().catch((error) => setStatus(error.message || "The media studio could not open.", true));
+  </script>
+</body>
+</html>

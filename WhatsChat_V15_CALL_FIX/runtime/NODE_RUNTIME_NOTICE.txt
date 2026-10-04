@@ -1,0 +1,5 @@
+This folder contains the portable Node.js v24.14.0 Windows runtime used only to run the WhatsChat server.
+
+Node.js project and license information:
+https://nodejs.org/
+https://github.com/nodejs/node/blob/v24.14.0/LICENSE

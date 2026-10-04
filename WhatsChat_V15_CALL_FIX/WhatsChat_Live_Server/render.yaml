@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: whatschat-live-server
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: DATA_FILE
+        value: /app/data/whatschat-data.json
+

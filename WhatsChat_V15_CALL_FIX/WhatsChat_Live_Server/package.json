@@ -1,0 +1,14 @@
+{
+  "name": "whatschat-live-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "No-dependency WebSocket server for the WhatsChat TurboWarp project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+

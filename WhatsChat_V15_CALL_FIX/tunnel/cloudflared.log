@@ -1,0 +1,13 @@
+﻿
+{"level":"info","time":"2026-10-04T11:51:59Z","message":"Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"}
+{"level":"info","time":"2026-10-04T11:51:59Z","message":"Requesting new quick Tunnel on trycloudflare.com..."}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"|  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"|  https://independence-penalties-bones-populations.trycloudflare.com                        |"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"+--------------------------------------------------------------------------------------------+"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"Version 2026.7.2 (Checksum cdb5d4432f6ae1595654a692a51308b69d2bf7af961f5578d9391837cf072df9)"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"GOOS: windows, GOVersion: go1.26.4, GoArch: amd64"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"Settings: map[ha-connections:1 logfile:C:\\Users\\Admin\\Documents\\Codex\\2026-07-15\\m\\outputs\\WhatsChat_V15_VOICE_VIDEO_CALL_FIX_VERIFIED_2026-08-02\\WhatsChat_V15_CALL_FIX\\tunnel\\cloudflared.log loglevel:info no-autoupdate:true p:http2 protocol:http2 url:http://127.0.0.1:8080]"}
+{"level":"info","time":"2026-10-04T11:52:04Z","message":"cloudflared will not automatically update on Windows systems."}
+{"level":"info","time":"2026-10-04T11:52:05Z","message":"Generated Connector ID: fad03337-d200-4159-9eea-c0db8c989192"}

@@ -1,0 +1,12 @@
+WhatsChat public gateway is ready.
+
+SHARE THIS PAGE WITH THE OTHER PERSON:
+https://independence-penalties-bones-populations.trycloudflare.com
+
+The public Scratch project from that page is already configured to use:
+wss://independence-penalties-bones-populations.trycloudflare.com/ws
+
+Keep this computer on and keep the gateway running.
+The address changes if the public tunnel is stopped and started again.
+Offline messages appear after login. Voice and video calls require both people to be online.
+Messages are not end-to-end encrypted.
